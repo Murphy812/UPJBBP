@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Email {
-    public static final String COMPANY_DOMAIN = "achucompany.com";
-    public static final int PASSWORD_DEFAULT_LENGTH = 10;
+    private static final String COMPANY_DOMAIN = "achucompany.com";
+    private static final int PASSWORD_DEFAULT_LENGTH = 10;
     private String firstName;
     private String lastName;
 
@@ -16,14 +16,14 @@ public class Email {
 
     private String alternateEmail;
 
-    public Email(String firstName, String lastName) {
+    Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         System.out.println("EMAIL CREATED: " + this.firstName + " " + this.lastName);
         this.department = this.setDepartment();
         System.out.println("DEPARTMENT SET: " + this.department);
 
-        this.password = generateRandomPassword(PASSWORD_DEFAULT_LENGTH);
+        this.password = generateRandomPassword();
         System.out.println("PASSWORD SET: " + this.password);
 
         this.email = (this.firstName + "." + this.lastName.toLowerCase() + "@" + this.department + "." + COMPANY_DOMAIN).toLowerCase();
@@ -44,14 +44,14 @@ public class Email {
             case 3:
                 return "acc";
             default:
-                throw new IllegalStateException("Unexpected value: " + depChoice);
+                return "";
         }
     }
 
-    private String generateRandomPassword(int length) {
+    private String generateRandomPassword() {
         String passwordSet = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789!@#$%";
-        char[] password = new char[length];
-        for (int i = 0; i < length; i++) {
+        char[] password = new char[Email.PASSWORD_DEFAULT_LENGTH];
+        for (int i = 0; i < Email.PASSWORD_DEFAULT_LENGTH; i++) {
             int rand = (int) (Math.random() * passwordSet.length());
             password[i] = passwordSet.charAt(rand);
         }
