@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/emailapp.iml" filepath="$PROJECT_DIR$/.idea/modules/emailapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/emailapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/emailapp.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/emailapp.test.iml" filepath="$PROJECT_DIR$/.idea/modules/emailapp.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/upjbbp.emailapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/upjbbp.emailapp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/upjbbp.emailapp.test.iml" filepath="$PROJECT_DIR$/.idea/modules/upjbbp.emailapp.test.iml" />
     </modules>
   </component>
 </project>

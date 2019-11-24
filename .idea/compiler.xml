@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="emailapp.main" target="1.8" />
       <module name="emailapp.test" target="1.8" />
+      <module name="upjbbp.emailapp.main" target="1.8" />
+      <module name="upjbbp.emailapp.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,6 +3,25 @@ import java.util.Scanner;
 public class Email {
     private static final String COMPANY_DOMAIN = "achucompany.com";
     private static final int PASSWORD_DEFAULT_LENGTH = 10;
+
+    Email(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        System.out.println("EMAIL CREATED: " + this.firstName + " " + this.lastName);
+
+        this.password = generateRandomPassword();
+
+        this.email = (this.firstName + "." + this.lastName + "@" + COMPANY_DOMAIN).toLowerCase();
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     private String firstName;
     private String lastName;
 
@@ -16,39 +35,38 @@ public class Email {
 
     private String alternateEmail;
 
-    Email(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        System.out.println("EMAIL CREATED: " + this.firstName + " " + this.lastName);
-        this.department = this.setDepartment();
-        System.out.println("DEPARTMENT SET: " + this.department);
-
-        this.password = generateRandomPassword();
-        System.out.println("PASSWORD SET: " + this.password);
-
-        this.email = (this.firstName + "." + this.lastName.toLowerCase() + "@" + this.department + "." + COMPANY_DOMAIN).toLowerCase();
-        System.out.println("YOUR EMAIL: " + this.email);
-
+    public String getEmail() {
+        return email;
     }
 
-    private String setDepartment() {
+    void askDepartment() {
         System.out.println("DEPARTMENT CODES:\n1 for Sales\n2 for Development\n3 for Accounting\n0 for none\n"
                 + "Enter the department code:");
         Scanner in = new Scanner(System.in);
         int depChoice = in.nextInt();
+        String dep = "";
         switch (depChoice) {
             case 1:
-                return "sl";
+                dep = "sl";
+                break;
             case 2:
-                return "dev";
+                dep = "dev";
+                break;
             case 3:
-                return "acc";
+                dep = "acc";
+                break;
             default:
-                return "";
+                dep = "";
         }
+        this.setDepartment(dep);
     }
 
-    private String generateRandomPassword() {
+
+    private void setDepartment(String cDepartment) {
+        this.department = cDepartment;
+    }
+
+    String generateRandomPassword() {
         String passwordSet = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789!@#$%";
         char[] password = new char[Email.PASSWORD_DEFAULT_LENGTH];
         for (int i = 0; i < Email.PASSWORD_DEFAULT_LENGTH; i++) {
@@ -62,7 +80,7 @@ public class Email {
         this.password = pssword;
     }
 
-    public int getMailboxCapacity() {
+    private int getMailboxCapacity() {
         return this.mailboxCapacity;
     }
 
@@ -70,12 +88,21 @@ public class Email {
         this.mailboxCapacity = mboxCapacity;
     }
 
-    public String getAlternateEmail() {
+    String getAlternateEmail() {
         return this.alternateEmail;
     }
 
-    public void setAlternateEmail(String altEmail) {
+    void setAlternateEmail(String altEmail) {
         this.alternateEmail = altEmail;
+    }
+
+    String showInfo() {
+        return "DISPLAY NAME: " + this.firstName + " " + this.lastName + "\n"
+                + "COMPANY EMAIL: " + this.email + "\n"
+                + "DEPARTMENT: " + this.department + "\n"
+                + "MAILBOX CAPACITY: " + this.getMailboxCapacity() + "mb\n"
+                + "PRIVATE EMAIL: " + this.alternateEmail + "\n"
+                ;
     }
 
 }
